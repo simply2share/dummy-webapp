@@ -1,0 +1,11 @@
+FROM openjdk:17-jdk-alpine
+LABEL maintainer="jdev.pp.ua@gmail.com"
+
+ARG JAR_FILE=target/*webapp*.jar
+COPY ${JAR_FILE} webapp.jar
+
+ENV TZ=Europe/Kiev
+
+EXPOSE 7777
+
+ENTRYPOINT ["java","-jar","/webapp.jar"]
