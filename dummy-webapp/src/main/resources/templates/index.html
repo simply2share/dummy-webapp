@@ -1,9 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+	crossorigin="anonymous">
+</head>
 <body>
-	<div class="container">
-		<h2 th:text="#{title.hello}">TITLE</h2>
-		<img src="poster.jpg" width="640" th:alt="#{title.hello}" />
+	<div class="px-4 py-5 my-5 text-center">
+		<img class="d-block mx-auto mb-4" src="poster.jpg" width="480"
+			th:alt="#{title.hello}" />
+		<h3 class="display-5" th:text="#{title.hello}">TITLE</h3>
+		<div class="col-lg-6 mx-auto">
+			<p class="mb-4">On 24 February 2022, the Russian flagship cruiser Moskva, and patrol boat Vasily Bykov,
+			 began an assault on Snake Island, a Ukrainian island located in the Black Sea.
+			  It is a small island with a single village populated by fewer than 30 people,
+			   that had a contingent of 13 border guards stationed on the island at the time of the attack.
+			    The Moskva called on the soldiers to surrender in return for their safety,
+			     which was firmly declined by the defenders.</p>
+			<dl class="row">
+				<dt class="col-sm-4 text-end">Russian warship:</dt>
+				<dd class="col-sm-8 text-start">"Snake Island, I, Russian warship, repeat
+				the offer: put down your arms and surrender, or you will be bombed.
+				Have you understood me? Do you copy?"</dd>
+				<dt class="col-sm-4 text-end">Ukrainian 1 to Ukrainian 2:</dt>
+				<dd class="col-sm-8 text-start">"That's it, then. Or, do we need to fuck them back
+				off?"</dd>
+				<dt class="col-sm-4 text-end">Ukrainian 2 to Ukrainian 1:</dt>
+				<dd class="col-sm-8 text-start">"Might as well."</dd>
+				<dt class="col-sm-4 text-end">Ukrainian 1:</dt>
+				<dd class="col-sm-8 text-start">"Russian warship, go fuck yourself."</dd>
+			</dl>
+			<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+				<input class="btn btn-primary btn-lg px-4 gap-3" type="button"
+					th:title="#{button.like}" th:value="@{${likes} + ' : ' + #{button.like}}"
+					onClick="location.href='/like'" />
+				<input class="btn btn-outline-secondary btn-lg px-4" type="button"
+					th:title="#{button.dislike}" th:value="@{${dislikes} + ' : ' + #{button.dislike}}"
+					onClick="location.href='/dislike'" />
+			</div>
+		</div>
 	</div>
 </body>
 </html>
