@@ -35,12 +35,25 @@
 				<dd class="col-sm-8 text-start">"Russian warship, go f*ck yourself."</dd>
 			</dl>
 			<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-				<input class="btn btn-primary btn-lg px-4 gap-3" type="button"
-					th:title="#{button.like}" th:value="@{${likes} + ' : ' + #{button.like}}"
-					onClick="location.href='/like'" />
-				<input class="btn btn-outline-secondary btn-lg px-4" type="button"
-					th:title="#{button.dislike}" th:value="@{${dislikes} + ' : ' + #{button.dislike}}"
-					onClick="location.href='/dislike'" />
+				<script type="text/javascript">
+					function onClickButton(action) {
+						var form = document.getElementById("vote");
+						form.action = (typeof action === "undefined") ? "/" : action;
+						form.submit();
+					}
+				</script>
+				<form id="vote" method="post">
+					<input class="btn btn-primary btn-lg px-4 gap-3" type="button"
+						th:title="#{button.like}"
+						th:value="@{${likes} + ' : ' + #{button.like}}"
+						onClick="onClickButton('/like')" />
+						
+					<input
+						class="btn btn-outline-secondary btn-lg px-4" type="button"
+						th:title="#{button.dislike}"
+						th:value="@{${dislikes} + ' : ' + #{button.dislike}}"
+						onClick="onClickButton('/dislike')" />
+				</form>
 			</div>
 		</div>
 	</div>
