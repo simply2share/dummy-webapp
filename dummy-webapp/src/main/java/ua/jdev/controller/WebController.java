@@ -22,10 +22,10 @@ public class WebController {
 	
 	@GetMapping
 	public String home(Model model) {
-		Statistics result = dao.statistics();
+		Statistics statistics = dao.statistics();
 		
-		model.addAttribute("likes", result.likes());
-		model.addAttribute("dislikes", result.dislikes());
+		model.addAttribute("likes", statistics.likes());
+		model.addAttribute("dislikes", statistics.dislikes());
 		
 		return "index";
 	}
