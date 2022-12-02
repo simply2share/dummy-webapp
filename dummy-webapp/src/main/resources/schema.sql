@@ -1,5 +1,5 @@
 create table if not exists vote (
-	id identity,
+	id bigserial primary key,
 	decision boolean,
 	vote_date timestamp
 );
