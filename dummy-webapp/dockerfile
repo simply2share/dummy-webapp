@@ -2,10 +2,15 @@ FROM openjdk:17-jdk-alpine
 LABEL maintainer="jdev.pp.ua@gmail.com"
 
 ARG JAR_FILE=target/*webapp*.jar
-COPY ${JAR_FILE} webapp.jar
+ARG DEFAULT_HTTP_PORT=7777
 
 ENV TZ=Europe/Kiev
+ENV HTTP_PORT=${DEFAULT_HTTP_PORT}
+ENV DB_HOST=postgres
 
-EXPOSE 7777
+EXPOSE ${HTTP_PORT}
+
+COPY ${JAR_FILE} webapp.jar
 
 ENTRYPOINT ["java","-jar","/webapp.jar"]
+CMD ["--server.port=${HTTP_PORT}"]
